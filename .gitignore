@@ -1,0 +1,11 @@
+# macOS generated files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Ignoring .env files (if you use them for storing sensitive environment data)
+.env
+env
+secrets.h
+
+# Other
