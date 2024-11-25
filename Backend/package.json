@@ -1,0 +1,19 @@
+{
+  "name": "disturbance-free-calling-backend",
+  "version": "1.0.0",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ImSeanConroy/disturbance-free-calling.git"
+  },
+  "author": "Sean Conroy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ImSeanConroy/disturbance-free-calling/issues"
+  },
+  "homepage": "https://github.com/ImSeanConroy/disturbance-free-calling#readme",
+  "description": ""
+}

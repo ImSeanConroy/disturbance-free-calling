@@ -44,3 +44,7 @@ secrets.h
 
 # Logs (optional, for certain setups)
 *.log
+
+# Other
+node_modules
+deployment.zip
