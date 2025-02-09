@@ -1,29 +1,29 @@
 # IAM Policy
 resource "aws_iam_policy" "policy" {
   name = "DisturbanceFreeCallingPolicy"
-  description = "My test policy"
+  description = "Disturbance Free Calling Policy"
 
   policy = jsonencode({
-    "Version": "2012-10-17",
-    "Statement": [
+    Version = "2012-10-17",
+    Statement = [
       {
-        "Effect": "Allow",
-        "Action": "logs:CreateLogGroup",
-        "Resource": "arn:aws:logs::${data.aws_caller_identity.current.account_id}:*"
-      },
-      {
-        "Effect": "Allow",
-        "Action": [
+        Effect = "Allow",
+        Action = [
           "logs:CreateLogStream",
           "logs:PutLogEvents"
         ],
-        "Resource": "arn:aws:logs::${data.aws_caller_identity.current.account_id}:log-group:/aws/lambda/DisturbanceFreeCallingLambda:*"
+        Resource = "arn:aws:logs:eu-central-1:${data.aws_caller_identity.current.account_id}:log-group:${aws_cloudwatch_log_group.log.name}:*"
       },
       {
-        "Effect": "Allow",
-        "Action": "iot:Publish",
-        "Resource": "arn:aws:iot::${data.aws_caller_identity.current.account_id}:topic/*"
-      }
+        Effect = "Allow",
+        Action = "iot:Publish",
+        Resource = "arn:aws:iot:eu-central-1:${data.aws_caller_identity.current.account_id}:topic/*"
+      },
+      {
+        Effect = "Allow",
+        Action = "iot:Connect",
+        Resource = "arn:aws:iot:eu-central-1:${data.aws_caller_identity.current.account_id}:client/${aws_iot_thing.device.name}"
+      },
     ]
   })
 
@@ -40,8 +40,8 @@ resource "aws_iam_role" "role" {
     Version = "2012-10-17",
     Statement = [
       {
-        Action    = "sts:AssumeRole",
-        Effect    = "Allow",
+        Effect = "Allow",
+        Action = "sts:AssumeRole",
         Principal = {
           Service = "lambda.amazonaws.com"
         }
@@ -64,11 +64,26 @@ resource "aws_iam_role_policy_attachment" "role_policy_attachment" {
 resource "aws_lambda_function" "test_lambda" {
   function_name = "DisturbanceFreeCallingLambda"
   handler       = "index.handler"
-  runtime       = "nodejs18.x"
+  runtime       = "nodejs20.x"
   role          = aws_iam_role.role.arn
   filename      = "deployment.zip"
 
+  environment {
+    variables = {
+      AWS_IOT_TOPIC  = "disturbance-free-calling/sub"
+      AWS_IOT_REGION = "eu-central-1"
+    }
+  }
+
   tags = {
     project = "disturbance-free-calling"
+  }
+}
+
+resource "aws_cloudwatch_log_group" "log" {
+  name = "/aws/lambda/DisturbanceFreeCallingLambda"
+
+  tags = {
+    Project = "Disturbance-Free-Calling"
   }
 }

@@ -12,22 +12,22 @@ resource "aws_iot_policy" "policy" {
   name = "DisturbanceFreeCallingPolicy"
 
   policy = jsonencode({
-    "Version": "2012-10-17",
-    "Statement": [
+    Version = "2012-10-17",
+    Statement = [
       {
-        "Effect": "Allow",
-        "Action": "iot:Connect",
-        "Resource": "arn:aws:iot::${data.aws_caller_identity.current.account_id}:client/DisturbanceFreeCallingDevice"
+        Effect = "Allow",
+        Action = "iot:Connect",
+        Resource = "arn:aws:iot:eu-central-1:${data.aws_caller_identity.current.account_id}:client/DisturbanceFreeCallingDevice"
       },
       {
-        "Effect": "Allow",
-        "Action": "iot:Subscribe",
-        "Resource": "arn:aws:iot::${data.aws_caller_identity.current.account_id}:topicfilter/disturbance-free-calling/sub"
+        Effect = "Allow",
+        Action = "iot:Subscribe",
+        Resource = "arn:aws:iot:eu-central-1:${data.aws_caller_identity.current.account_id}:topicfilter/disturbance-free-calling/sub"
       },
       {
-        "Effect": "Allow",
-        "Action": "iot:Receive",
-        "Resource": "arn:aws:iot::${data.aws_caller_identity.current.account_id}:topic/disturbance-free-calling/sub"
+        Effect = "Allow",
+        Action = "iot:Receive",
+        Resource = "arn:aws:iot:eu-central-1:${data.aws_caller_identity.current.account_id}:topic/disturbance-free-calling/sub"
       }
     ]
   })

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.mjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "zip": "zip -r ../Terraform/deployment.zip ."
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,9 @@
     "url": "https://github.com/ImSeanConroy/disturbance-free-calling/issues"
   },
   "homepage": "https://github.com/ImSeanConroy/disturbance-free-calling#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "@aws-sdk/client-iot-data-plane": "^3.744.0",
+    "aws-sdk": "^2.1692.0"
+  }
 }

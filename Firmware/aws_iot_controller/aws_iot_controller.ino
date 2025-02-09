@@ -53,6 +53,10 @@ void connectAWS()
 void messageHandler(String &topic, String &payload) {
   Serial.println();
   Serial.println("Incoming: " + topic + " - " + payload);
+  digitalWrite(LED_BUILTIN, HIGH);
+  delay(1000);
+  digitalWrite(LED_BUILTIN, LOW);
+  delay(1000);
 }
 
 void setup() {
