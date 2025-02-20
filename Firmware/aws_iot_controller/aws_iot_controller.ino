@@ -9,6 +9,7 @@ MQTTClient client = MQTTClient(256);
 
 void connectAWS()
 {
+  // Connect to Wifi
   WiFi.mode(WIFI_STA);
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
 
@@ -53,14 +54,17 @@ void connectAWS()
 void messageHandler(String &topic, String &payload) {
   Serial.println();
   Serial.println("Incoming: " + topic + " - " + payload);
+
+  // Blink Built in LED
   digitalWrite(LED_BUILTIN, HIGH);
-  delay(1000);
+  delay(1000);  
   digitalWrite(LED_BUILTIN, LOW);
   delay(1000);
 }
 
 void setup() {
   Serial.begin(9600);
+  pinMode(LED_BUILTIN, OUTPUT);
   connectAWS();
 }
 

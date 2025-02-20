@@ -61,12 +61,13 @@ resource "aws_iam_role_policy_attachment" "role_policy_attachment" {
 }
 
 # Lambda Function
-resource "aws_lambda_function" "test_lambda" {
+resource "aws_lambda_function" "lambda" {
   function_name = "DisturbanceFreeCallingLambda"
   handler       = "index.handler"
   runtime       = "nodejs20.x"
   role          = aws_iam_role.role.arn
-  filename      = "deployment.zip"
+  s3_bucket = aws_s3_bucket.bucket.id
+  s3_key = aws_s3_object.object.key
 
   environment {
     variables = {
@@ -80,6 +81,7 @@ resource "aws_lambda_function" "test_lambda" {
   }
 }
 
+# Log Group
 resource "aws_cloudwatch_log_group" "log" {
   name = "/aws/lambda/DisturbanceFreeCallingLambda"
 
