@@ -1,3 +1,18 @@
+/*
+ * ============================================================
+ * Project: Disturbance Free Calling
+ * Developer: Sean Conroy
+ * Board: Seeed Studio Xiao ESP32S3
+ * License: MIT
+ * Description:
+ *   - Connects to AWS IoT Core using MQTT over a secure connection.
+ *   - Subscribes to a predefined topic to receive real-time messages.
+ *   - On receiving a message, the built-in LED blinks to signal incoming data.
+ *   - Designed to enable quiet, non-intrusive notifications (e.g., for calls).
+ *   - Uses WiFi credentials and certificates defined in "secrets.h".
+ * ============================================================
+ */
+
 #include "secrets.h"
 #include <WiFiClientSecure.h>
 #include <MQTTClient.h>

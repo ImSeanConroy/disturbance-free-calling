@@ -1,5 +1,20 @@
-#include "secrets.h"
+/*
+ * ============================================================
+ * Project: Disturbance Free Calling
+ * Developer: Sean Conroy
+ * Board: Seeed Studio Xiao ESP32S3
+ * License: MIT
+ * Description:
+ *   - Connects to a Wi-Fi network using credentials from "secrets.h".
+ *   - Polls the Webex API at a regular interval to retrieve user status.
+ *   - Parses JSON response to extract current activity (e.g., in a call or meeting).
+ *   - Lights up the built-in LED during busy statuses like "call", "meeting",
+ *     "presenting", or "DoNotDisturb" to indicate unavailability.
+ *   - Supports quiet visual notification to minimize interruptions.
+ * ============================================================
+ */
 
+#include "secrets.h"
 #include <ArduinoJson.h>
 #include <WiFi.h>
 #include <HTTPClient.h>
