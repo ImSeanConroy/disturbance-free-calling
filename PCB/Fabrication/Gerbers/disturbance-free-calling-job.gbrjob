@@ -5,13 +5,13 @@
       "Application": "Pcbnew",
       "Version": "8.0.6"
     },
-    "CreationDate": "2025-02-09T14:24:31+00:00"
+    "CreationDate": "2025-07-08T21:52:46+01:00"
   },
   "GeneralSpecs": {
     "ProjectId": {
       "Name": "disturbance-free-calling",
       "GUID": "64697374-7572-4626-916e-63652d667265",
-      "Revision": "rev?"
+      "Revision": "0.1"
     },
     "Size": {
       "X": 74.55,
@@ -27,7 +27,9 @@
       "PadToPad": 0.2,
       "PadToTrack": 0.2,
       "TrackToTrack": 0.2,
-      "MinLineWidth": 0.2
+      "MinLineWidth": 0.2,
+      "TrackToRegion": 0.5,
+      "RegionToRegion": 0.5
     }
   ],
   "FilesAttributes": [
@@ -54,11 +56,6 @@
     {
       "Path": "disturbance-free-calling-F_Silkscreen.gbr",
       "FileFunction": "Legend,Top",
-      "FilePolarity": "Positive"
-    },
-    {
-      "Path": "disturbance-free-calling-B_Silkscreen.gbr",
-      "FileFunction": "Legend,Bot",
       "FilePolarity": "Positive"
     },
     {
